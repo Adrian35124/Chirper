@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Nav from './navbar'
 class App extends Component {
     constructor(props) {
         super(props);
@@ -24,20 +24,26 @@ class App extends Component {
         }
     }
     render() {
+        let chirps = (this.state.chirps.map((chirps) =>{
+
+            return(
+                <React.Fragment>
+                    
+                  <div style={{border: '5px solid lightblue'}} class="card w-20">
+                    <h1>{chirps.username}</h1>
+                    <p>{chirps.message}</p>
+                    <h3>{chirps.comment}</h3>
+                    <button class="btn btn-success btn-md">Click me !</button>
+                    </div>
+                </React.Fragment>
+                
+            )
+        }))
         return (
-            this.state.chirps.map((chirps) =>{
-                return(
-                    <React.Fragment>
-                      <div style={{border: '5px solid lightblue'}} class="card w-20">
-                        <h1>{chirps.username}</h1>
-                        <p>{chirps.message}</p>
-                        <h3>{chirps.comment}</h3>
-                        <button class="btn btn-success btn-md">Click me !</button>
-                        </div>
-                    </React.Fragment>
-                )
-            })
-        ) 
+            <React.Fragment> 
+            <Nav />
+            {chirps}
+        </React.Fragment>) 
     };
 };
          
